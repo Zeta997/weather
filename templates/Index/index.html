@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='proCss/proCss.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/baseCss.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Tiempo</title>
+</head>
+<body>
+    <nav class="header">
+    <!-- <input onclick="geolocationGPS()" type="button" value="Location"> -->
+    <form action="/" method="post" class="formulario">
+        <input type="text" name="provincia" id="provincia" placeholder="Introduce la provincia">
+        <input type="submit" value="Buscar" class="boton">
+    </form>
+    </nav>
+    
+    <!-- <script src="{{url_for('static', filename='js/look.js')}}"></script> -->
+    {%block content%}
+    <!-- Contenido aqui -->
+    {%endblock%}
+</body>
+</html>

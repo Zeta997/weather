@@ -1,0 +1,48 @@
+{%extends 'Index/index.html'%}
+
+{%block content%}
+        <div class="container">
+            <h3 class="title">{{content.title}}</h3>
+            <h2 class="title">{{content.date_time}}</h2>
+            <div class="container-temp-image">
+                <h1 class="temp_act">{{content.temp_act}}°</h1>
+                <div class="render-content-img">
+                    {%if state_skay in 'Nubes altas' or state_skay in 'Cubierto'%}
+                        <img src="{{url_for('static', filename='img/partly-cloudy-day.svg')}}" alt="img tiempo">
+                    {%elif state_skay in 'Despejado' %}
+                        <img src="{{url_for('static', filename='img/clear-day.svg')}}" alt="img tiempo">
+                    {%endif%}
+                    <p class="temp-min">{{state_skay}}</p>
+                </div>
+                
+            </div>
+            <div class="aling-element">
+                <p class="temp-min">Mín.{{content.temp_min}}</p>
+                <p class="temp_max">Máx.{{content.temp_max}}</p>  
+            </div> 
+            <h3>Resto del día</h3> 
+            <div class="temp-day">
+                <div class="list-day-temp">
+                    {%for time in lista_hora%}                       
+                        <p class="time">{{time+1}}:00</p>
+                    {%endfor%}
+                    {%for time_m in lista_hora_m%}
+                        {%if time_m < 10%}
+                            <p class="time">0{{time_m}}:00</p>
+                        {%else%}
+                        <p class="time">{{time_m}}:00</p>
+                        {%endif%}
+                    {%endfor%}
+                </div>
+                    <div class="list-day-temp"> 
+                        {%for elem in range(0,total)%}                           
+                            <p class="temp">{{temps_mun[elem+1]}}°C</p>                            
+                        {%endfor%}
+                        {%for elem_m in range(0,total_m)%}
+                            <p class="temp">{{temp_m[elem_m]}}°C</p>
+                        {%endfor%}
+                    </div>
+                    
+            </div>          
+        </div>
+{%endblock%}
