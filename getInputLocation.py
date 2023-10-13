@@ -16,7 +16,13 @@ class get_input_user:
             if ciudad.lower() == (content['list-mun'][y]['Municipio']).lower():
                 
                 return f"https://www.el-tiempo.net/api/json/v2/provincias/{content['list-mun'][y]['CP']}/municipios/{content['list-mun'][y]['codine']}"
-
+        
+        for y in range(len(content['list-mun'])):
+            
+            if ciudad.lower() in (content['list-mun'][y]['Municipio']).lower():
+                
+                return f"https://www.el-tiempo.net/api/json/v2/provincias/{content['list-mun'][y]['CP']}/municipios/{content['list-mun'][y]['codine']}"
+    
     def get_temp_now(ciudad_temporal):
         file = requests.get(f"{ciudad_temporal}")
         data = file.json()
@@ -35,7 +41,7 @@ class get_input_user:
         file = requests.get(f"{estado_cielo_desc}")
         data = file.json()
         item = list()
-        item =data['pronostico']['hoy']['estado_cielo_descripcion'][0]
+        item =data['stateSky']['description']
         return item
     
 if __name__=='__main__':

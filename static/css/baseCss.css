@@ -22,7 +22,7 @@ input#provincia {
     max-width: 300px;
     border: none;
     height: 30px;
-    background-color: #709d9eed;
+    background-color: #ddddddbd;
 }
 
 input.boton{
@@ -32,4 +32,8 @@ input.boton{
     border: none;
     max-width: 100px;
     border-radius: 4px;
+}
+
+h1 {
+    text-align: center;
 }

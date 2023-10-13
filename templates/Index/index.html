@@ -10,16 +10,15 @@
 </head>
 <body>
     <nav class="header">
-    <!-- <input onclick="geolocationGPS()" type="button" value="Location"> -->
     <form action="/" method="post" class="formulario">
         <input type="text" name="provincia" id="provincia" placeholder="Introduce la provincia">
         <input type="submit" value="Buscar" class="boton">
     </form>
     </nav>
     
-    <!-- <script src="{{url_for('static', filename='js/look.js')}}"></script> -->
     {%block content%}
     <!-- Contenido aqui -->
+    <h1>El tiempo en las provincias de España</h1>
     {%endblock%}
 </body>
 </html>

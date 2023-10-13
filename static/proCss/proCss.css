@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #5f9ea0cf;
+    background-color: #2474a4cf;
 }
 
 div.container{
@@ -15,7 +15,7 @@ div.container{
 
 .title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    color:#f7f7f7eb;
 }
 
 h3.title {
@@ -27,6 +27,7 @@ h1.temp_act{
     font-size: 50px;
     font-family: 'Verdana',sans-serif;
     font-weight: 100;
+    color:#f0ffffde;
 }
 
 div.container-temp-image{
@@ -41,6 +42,7 @@ div.aling-element{
     justify-content: center;
     width: auto;
     gap: 20%;
+    color:#f0fffff2;
 }
 
 div.temp-day{
@@ -51,6 +53,7 @@ div.temp-day{
     min-width: 40%;
     flex-wrap: nowrap;
     overflow-x: auto;
+    background-color:#f0fbfbab;
 }
 
 .temp-day::-webkit-scrollbar-thumb{
@@ -60,16 +63,19 @@ div.temp-day{
 .temp-day h3{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
+    
 }
 
 .render-content-img p{
     margin-top: 0;
+    color:azure;
 }
 
 div.list-day-temp{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    
 }
 
 p.time{
@@ -93,6 +99,7 @@ input#provincia::placeholder{
         border: 1px solid black;
         overflow-x: auto;
         scrollbar-width: none;
+        background-color:#f0fbfbab;
     }
     p.temp{
         padding-left: 1.1rem;

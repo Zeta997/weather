@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from jinja2 import FileSystemLoader
 from environs import Env
 import requests 
 from datetime import datetime
@@ -14,6 +13,8 @@ env = Env()
 dir_template = env('BASE_DIR_TEMPLATE') 
 dir_static = env('BASE_DIR_STATIC')
 app = Flask(__name__, template_folder=dir_template, static_folder= dir_static)
+
+
 @app.route('/', methods=['GET','POST'])
 def index():
     
@@ -41,16 +42,9 @@ def index():
                     'date_time': date_time.strftime("%A, %d %b").upper(),
                     
                     
-                }
-            # print(temp_m)
+            }
             temps_mun=temp[int(temp.index(date['temperatura_actual'])):]
-            # print(temp[int(temp.index(date['temperatura_actual']))])
-            # print(temp.index(date['temperatura_actual'])) #5
-            # print(temp[temp.index(date['temperatura_actual']):])
-            # print(len(temp[temp.index(date['temperatura_actual']):])) #10
-            # print(temps_mun[temp.index(date['temperatura_actual']):])
-            # print(temp[temp.index(date['temperatura_actual']):][:len(temp[temp.index(date['temperatura_actual']):])])
-            # print(len(temp[temp.index(date['temperatura_actual']):][:len(temp[temp.index(date['temperatura_actual']):])])-1)
+            control_hora = lista_hora[date_time.hour]           
             total_m = len(temp_m)
             total=len(temp[temp.index(date['temperatura_actual']):][:len(temp[temp.index(date['temperatura_actual']):])])-1
             return render_template('provincias/pro.html',
@@ -61,7 +55,9 @@ def index():
                                    total=total,
                                    temp_m=temp_m,
                                    total_m = total_m,
-                                   state_skay=state_skay)
+                                   state_skay=state_skay,
+                                   control_hora=control_hora,
+                                   )
         except Exception as e:
             print(e)
     return render_template('Index/index.html')

@@ -7,18 +7,30 @@
             <div class="container-temp-image">
                 <h1 class="temp_act">{{content.temp_act}}°</h1>
                 <div class="render-content-img">
-                    {%if state_skay in 'Nubes altas' or state_skay in 'Cubierto'%}
-                        <img src="{{url_for('static', filename='img/partly-cloudy-day.svg')}}" alt="img tiempo">
+                    {%if state_skay in 'Nubes altas' or state_skay in 'Poco nuboso'%}
+                        {%if control_hora < 20%}
+                            <img src="{{url_for('static', filename='img/partly-cloudy-day.svg')}}" alt="img tiempo">
+                        {%else%}
+                            <img src="{{url_for('static', filename='img/partly-cloudy-night.svg')}}" alt="img tiempo">
+                        {%endif%}
                     {%elif state_skay in 'Despejado' %}
-                        <img src="{{url_for('static', filename='img/clear-day.svg')}}" alt="img tiempo">
+                        {%if control_hora < 20%}
+                            <img src="{{url_for('static', filename='img/clear-day.svg')}}" alt="img tiempo">
+                        {%else%}
+                            <img src="{{url_for('static', filename='img/clear-night.svg')}}" alt="img tiempo">
+                        {%endif%}
+                    {%elif state_skay in 'Lluvioso'%}
+                    <img src="{{url_for('static', filename='img/raindrops.svg')}}" alt="img tiempo">
+                    {%elif state_skay in 'Cubierto' or state_skay in 'Nuboso' or state_skay in 'Muy nuboso'%}
+                    <img src="{{url_for('static', filename='img/cloudy.svg')}}" alt="img tiempo">
                     {%endif%}
                     <p class="temp-min">{{state_skay}}</p>
                 </div>
                 
             </div>
             <div class="aling-element">
-                <p class="temp-min">Mín.{{content.temp_min}}</p>
-                <p class="temp_max">Máx.{{content.temp_max}}</p>  
+                <p class="temp_max">Máx.{{content.temp_max}}</p> 
+                <p class="temp-min">Mín.{{content.temp_min}}</p>  
             </div> 
             <h3>Resto del día</h3> 
             <div class="temp-day">
@@ -35,8 +47,11 @@
                     {%endfor%}
                 </div>
                     <div class="list-day-temp"> 
-                        {%for elem in range(0,total)%}                           
-                            <p class="temp">{{temps_mun[elem+1]}}°C</p>                            
+                        {%for elem in range(0,total)%}  
+                            {%if control_hora != lista_hora%}                         
+                                <p class="temp">{{temps_mun[elem+1]}}°C</p> 
+                                {%set control_hora=lista_hora%}
+                            {%endif%}                           
                         {%endfor%}
                         {%for elem_m in range(0,total_m)%}
                             <p class="temp">{{temp_m[elem_m]}}°C</p>
